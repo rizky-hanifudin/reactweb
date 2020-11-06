@@ -1,0 +1,196 @@
+input
+mutation {
+ signUp(
+ username: "rizky-hanifudin99",
+ email: "user@rizky-hanifudin99.com",
+ password: "Rahasia!"
+ ) }
+output
+{
+  "data": {
+    "signUp": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNmJmMjc3ZTM5NTVjMjM5MDE1NzM2YyIsImlhdCI6MTYwMDkwOTk0M30._TbGUz03MmeWZeI46FoC_w9XFPdYCgkYdF_NTbp7B7Y"
+  }
+}
+
+output2
+{
+  "data": {
+    "signUp": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNzI5ZTYyM2Y2ZDZkMmMxOGM2ZmJjNiIsImlhdCI6MTYwMTM0NzE3MH0.vaObCod4fMtEt7JOwqwSzfuXALulxnk_n68ZvHaCRTA"
+  }
+}
+
+input
+
+mutation {    
+signIn(
+ username: "rizky-hanifudin99",
+ email: "user@rizky-hanifudin99.com",
+ password: "Rahasia!"
+ ) }
+
+{
+  "data": {
+    "signIn": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNmJmMjc3ZTM5NTVjMjM5MDE1NzM2YyIsImlhdCI6MTYwMDkxMTAzM30.peM5BqnSkwmGZuk59RjdGMW5iiZ12IlcZT_nwmMoZu4"
+  }
+}
+
+{ 
+  "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNmJmMjc3ZTM5NTVjMjM5MDE1NzM2YyIsImlhdCI6MTYwMDkxMTAzM30.peM5BqnSkwmGZuk59RjdGMW5iiZ12IlcZT_nwmMoZu4" 
+}
+
+#cara menambahkan notes
+input:
+mutation {
+newNote(content: "Hello! This is a user-created note") {
+id
+content
+} }
+
+#cara menghapus notes. butuh id-nya saja.
+input:
+mutation {
+deleteNote(id: "5f695ed532161e0d8c6d9aaa") {
+} }
+
+#cara update notes. butuh id-nya dan content.
+
+mutation {
+updateNote(
+  id: "5f695ed532161e0d8c6d9aaa", 
+  content:"Test update"
+  )
+  {
+    id
+    content
+  }
+}
+
+
+#cara cek siapa saja user kita/ semua user
+
+input:
+
+query {
+	users {
+	username
+	email
+	id
+} 
+}
+
+output:
+
+{
+  "data": {
+    "users": [
+      {
+        "username": "rizkyhanifudin",
+        "email": "user@rizkyhanifudin.com",
+        "id": "5f695e5632161e0d8c6d9aa7"
+      },
+      {
+        "username": "rizky-hanifudin",
+        "email": "user@rizky-hanifudin.com",
+        "id": "5f695ed532161e0d8c6d9aaa"
+      },
+      {
+        "username": "rizky-hanifudin2020",
+        "email": "user@rizky-hanifudin2020.com",
+        "id": "5f6bf1338f7cbf2db42ecee0"
+      },
+      {
+        "username": "rizky-hanifudin99",
+        "email": "user@rizky-hanifudin99.com",
+        "id": "5f6bf277e3955c239015736c"
+      }
+    ]
+  }
+}
+
+#menampilkan user yang sedang online/login
+
+input:
+
+query {
+      me {
+        username
+        email
+        id
+        
+} }
+
+#cek user berdasarkan id
+
+input:
+
+query {
+      user(username: "rizky-hanifudin99") {
+        username
+        email
+        id
+        
+} }
+
+output:
+
+{
+  "data": {
+    "user": {
+      "username": "rizky-hanifudin99",
+      "email": "user@rizky-hanifudin99.com",
+      "id": "5f6bf277e3955c239015736c"
+    }
+  }
+}
+
+#cek query semua notes 
+
+input:
+
+query {
+      notes {
+author
+id
+} }
+
+output:
+
+{
+  "data": {
+    "notes": []
+  }
+}
+
+# cara menampilkan notes
+
+input:
+
+query {
+      notes {
+content
+id
+} }
+
+output:
+
+{
+  "data": {
+    "notes": []
+  }
+}
+
+#menambahkan note dengan  favorite
+mutation {
+  newNote(content: "Hello, sedang belajar Javascript") {
+    content
+    favoriteCount
+  }
+}
+
+#menambahkan jumlah yang memfavorikan
+mutation {
+  toggleFavorite(id: "") {
+    favoriteCount
+  }
+}
+

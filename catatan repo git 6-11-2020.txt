@@ -1,0 +1,12 @@
+Login Github
+Buat new repository
+public
+
+#untuk remote / connect
+git remote add origin http://github.com/rizky-hanifudin/reactweb.git
+
+#cara cek
+git remote -v 
+
+git add .
+

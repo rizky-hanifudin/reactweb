@@ -1,0 +1,171 @@
+$ heroku login
+Create a new Git repository
+Initialize a git repository in a new or existing directory
+
+$ cd my-project/
+$ git init
+$ heroku git:remote -a app-kesepuluh
+Deploy your application
+Commit your code to the repository and deploy it to Heroku using Git.
+
+$ git add .
+
+$ git commit -am "pertama kali"
+
+#jika gagal ketika ini:
+#maka ketik ini 
+#git config --global user.email "rizkytkj22015@gmail.com"
+#git config --global user.name "rizky"
+
+$ git push heroku master
+
+Existing Git repository
+For existing repositories, simply add the heroku remote
+
+$ heroku git:remote -a app-kesepuluh
+
+
+git add .
+
+
+curl \ 
+-X POST \ 
+-H "Content-Type: application/json" \ 
+--data '{ "query": "{ notes { id } }" }' \ 
+https://app-kesepuluh.herokuapp.com
+
+cara fixs bcrypt:
+
+npm install --save bcrypt-nodejs && npm uninstall --save bcrypt
+npm install --save bcryptjs && npm uninstall --save bcrypt
+
+
+heroku git:remote -a app-kesepuluh
+
+git add .
+
+git commit -am "update"
+
+git push heroku master
+
+
+
+Dari Mas Nugi
+Heroku It seems there are some problems with my .gitignore file, it wasn't actually work.
+Just for some guys above, I fixed it by these command in terminal:
+
+git rm -r --cached .
+git add .
+git commit -m "fixed untracked files"
+@agathver I don't know why when I run "npm install bcrypt --save" then it installed the 1.0.3 version. I have to run "npm install bcrypt@2.0.1 --save" to update to your version.
+Thanks for your time. @agathver
+
+curl \
+-X POST \
+-H "Content-Type: application/json" \
+--data '{ "query": "{ notes { id } }" }' \
+https://app-kesepuluh.herokuapp.com/api/
+
+================
+mutation {
+ signUp(
+ username: "rizky-hanifudin599",
+ email: "user@rizky-hanifudin599.com",
+ password: "Rahasia!"
+ ) }
+================
+ {
+  "data": {
+    "signUp": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmN2JkZTNjMDdjYThmMzA3NDM0YjlkYyIsImlhdCI6MTYwMTk1MzM0MH0.1PfnIIyJIqHmj3ppVsLjq1D0sH8Q3gpFIA0BsxAoUTw"
+  }
+}
+================
+
+mutation {
+ signIn(
+ username: "rizky-hanifudin59",
+ email: "user@rizky-hanifudin59.com",
+ password: "Rahasia!"
+ ) }
+================
+ {
+  "data": {
+    "signIn": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmN2JkZTNjMDdjYThmMzA3NDM0YjlkYyIsImlhdCI6MTYwMTk1MzM4M30.xJRkoJh14IYnsSU75cr3sk44ya2a5DhdyYJqF4k0MJM"
+  }
+}
+================
+{ 
+  "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmN2JkYzY4MTIwY2U3MjJiNGJiMWU1NiIsImlhdCI6MTYwMTk1MjkyOX0.PixHOa8CGNY8kCYQE-ceySr0YXm4kt6jWV7-kqbknXE" 
+}
+================
+mutation {
+newNote(content: "Hello! This is a user-created note1") {
+id
+content
+} }
+================
+{
+  "data": {
+    "newNote": {
+      "id": "5f7bde9307ca8f307434b9df",
+      "content": "Hello! This is a user-created note1"
+    }
+  }
+}
+================
+#cara cek siapa saja user kita/ semua user
+query {
+	users {
+	username
+	email
+	id
+} 
+}
+================
+output:
+{
+  "data": {
+    "users": [
+      {
+        "username": "rizky-hanifudin59",
+        "email": "user@rizky-hanifudin59.com",
+        "id": "5f7bde2907ca8f307434b9da"
+      },
+      {
+        "username": "rizky-hanifudin590",
+        "email": "user@rizky-hanifudin590.com",
+        "id": "5f7bde3207ca8f307434b9db"
+      },
+      {
+        "username": "rizky-hanifudin599",
+        "email": "user@rizky-hanifudin599.com",
+        "id": "5f7bde3c07ca8f307434b9dc"
+      }
+    ]
+  }
+}
+================
+#cek query semua notes 
+
+query {
+      notes {
+author
+id
+} }
+================
+#cek user berdasarkan id
+
+input:
+
+query {
+      user(username: "rizky-hanifudin99") {
+        username
+        email
+        id
+        
+} }
+
+=======================
+
+mongodb+srv://Rizky59:Rizky591999@cluster0.yioiw.mongodb.net/<dbname>?retryWrites=true&w=majority
+mongodb+srv://Rizky59:Rizky591999@cluster0.yioiw.mongodb.net/10_?retryWrites=true&w=majority
